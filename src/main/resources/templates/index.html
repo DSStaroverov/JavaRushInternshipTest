@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="ru"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+<head>
+    <title>Тестовое задание</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+
+<body>
+<div class="container align-self-center">
+    <h1>Тестовое задание курса JavaRush</h1>
+    <a href="https://github.com/DSStaroverov/JavaRushInternshipTest"><button class="btn btn-outline-secondary my-2 my-sm-0">Скачать на GitHub</button></a>
+    <a th:href="@{/parts}"><button class="btn btn-outline-primary my-2 my-sm-0">К списку деталей</button></a>
+</div>
+</body>
+</html>

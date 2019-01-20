@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+
+<head>
+    <title th:text="${editPart.getTitle()}"></title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+
+<body>
+
+<div class="container">
+    <form th:action="@{/parts/edition/{id}(id = ${editPart.id})}" th:object="${editPart}" method="post" id="edition">
+        <table class="table text-center table-striped table-responsive-md" style="max-width: 350px">
+
+            <th class="bg-secondary" colspan="2">Редактирование детали id = <b th:text="${editPart.getId()}"></b></th>
+            <tr class="row">
+                <td>Название</td>
+                <td><input type="text" th:field="*{title}" th:placeholder="${editPart.getTitle()}" id="title" ></td>
+            </tr>
+            <tr class="row">
+                <td>Необходимость</td>
+                <td>
+                    <select id="necessary" name="necessary" class="form-control" th:field="*{necessary}">
+                        <option value="true"  th:selected="${editPart.isNecessary()}">Необходимая</option>
+                        <option value="false"  th:selected="${!editPart.isNecessary()}">Не обязательная</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row">
+                <td>Количество</td>
+                <td><input type="text" th:placeholder="${editPart.getCounts()}" id="counts" th:field="*{counts}"></td>
+            </tr>
+
+        </table>
+    </form>
+    <form th:action="@{/parts/delete/{id}(id = ${editPart.id})}" method="post" id="delete"></form>
+    <div class="row">
+        <button type="submit" form="edition" class="btn btn-outline-success my-sm-0 my-2 mr-2 ml-2">Применить</button>
+
+        <button type="submit" form="delete" class="btn btn-outline-danger my-sm-0 my-2 mr-2 ml-2" name="deleteBook">Удалить</button>
+
+        <a th:href="@{/parts/}"><button class="btn btn-outline-primary my-sm-0 my-2 mr-2 ml-2">Назад</button></a>
+    </div>
+</div>
+</body>
+</html>

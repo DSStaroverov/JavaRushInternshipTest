@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<form th:fragment="search (title)" id="data" class="form-inline my-2 my-lg-0" th:action="@{'/parts'}">
+    <input th:value="${title} ? ${title} : ''" class="form-control mr-1 ml-1" type="search" name="title" placeholder="поиск..." aria-label="Search"/>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Применить</button>
+</form>
+
+
+<div th:fragment="necessary (necessary)" class="form-group mr-3">
+    <label for="necessary" class="col-form-label mr-2">Показать:</label>
+    <select id="necessary" name="necessary" form="data" class="form-control">
+        <option value="" th:attr="selected = ${necessary == ''} ? 'selected' : null">все...</option>
+        <option value="true" th:attr="selected = ${necessary == 'true'} ? 'selected' : null">Необходимые</option>
+        <option value="false" th:attr="selected = ${necessary == 'false'} ? 'selected' : null">Не обязательные</option>
+    </select>
+</div>
+
+<div th:fragment="free"></div>
+</body>
+</html>

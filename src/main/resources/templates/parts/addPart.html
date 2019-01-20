@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+
+<head>
+    <title th:text="${'Новая деталь'}"></title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+
+<body>
+
+<div class="container">
+    <form th:action="@{#}" th:object="${newPart}" method="post" id="add" enctype="multipart/form-data">
+        <table class="table text-center table-striped" style="max-width: 350px; align-content: center" >
+            <th class="bg-secondary" colspan="2">Добавление детали</th>
+            <tr class="row">
+                <td>Название</td>
+                <td><input type="text" th:field="*{title}" id="title" ></td>
+            </tr>
+            <tr class="row">
+                <td>Необходимость</td>
+                <td>
+                    <select id="necessary" name="necessary" class="form-control" th:field="*{necessary}">
+                        <option value="1" >Необходимая</option>
+                        <option value="0">Не обязательная</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row">
+                <td>Количество</td>
+                <td><input type="text" id="counts" th:field="*{counts}"></td>
+            </tr>
+        </table>
+    </form>
+    <div class="row">
+        <button type="submit" form="add" class="btn btn-outline-success my-2 my-sm-0 mr-2 ml-2" >Применить</button>
+        <a th:href="@{/parts/}"><button class="btn btn-outline-primary my-2 my-sm-0 mr-2 ml-2">Назад</button></a>
+    </div>
+</div>
+
+
+</body>
+</html>
